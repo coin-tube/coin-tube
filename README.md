@@ -20,3 +20,12 @@ npm run build
 cd ..
 firebase deploy
 ```
+
+
+
+## 2022-02-17
+react-route-dom으로 라우팅 경로 분리
+react-boot-strap 패키지 설치
+```
+
+```

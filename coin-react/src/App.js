@@ -1,5 +1,13 @@
-import logo from './logo.svg';
 import './App.css';
+
+// react router-dom 사용 //
+import { BrowserRouter,Routes, Route, useNavigate } from "react-router-dom";
+import MainPage from './components/MainPage/MainPage';
+import LoginPage from "./components/LoginPage/LoginPage";
+import RegisterPage from "./components/RegisterPage/RegisterPage";
+import YoutuberPage from './components/YoutuberPage/YoutuberPage';
+import AdminPage from './components/AdminPage/AdminPage';
+
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'firebase/app';
@@ -36,21 +44,15 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>코인튜브 만세</p>
-        <button onClick={onClick}>test</button>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<MainPage/>} />
+        <Route path="/login" element={<LoginPage/>} />
+        <Route path="/register" element={<RegisterPage/>} />
+        <Route path="/youtuber" element={<YoutuberPage/>} />
+        <Route path="/admin" element={<AdminPage/>} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
