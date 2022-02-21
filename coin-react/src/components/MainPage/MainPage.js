@@ -3,6 +3,7 @@ import Header from '../Header';
 import { Nav, Navbar, NavDropdown, Container } from 'react-bootstrap';
 import styled from 'styled-components';
 import YoutuberCard from './YoutuberCard';
+import Badge from './Badge'; 
 
 function MainPage() {
   const [page, setPage] = useState(1);
