@@ -5,8 +5,9 @@ function Header() {
     <div>
       Header
       <div>
-        <a href="/">Main</a>
-        <a href="/login">Login</a>
+        <a href="/">Main</a><br></br>
+        <a href="/login">Login</a><br></br>
+        <a href="/register">register</a>
       </div>
     </div>
   );

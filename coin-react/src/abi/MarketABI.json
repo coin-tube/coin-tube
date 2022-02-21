@@ -1,0 +1,29 @@
+[
+	{
+		"constant": false,
+		"inputs": [
+			{
+				"name": "tokenId",
+				"type": "uint256"
+			},
+			{
+				"name": "NFTAddress",
+				"type": "address"
+			},
+			{
+				"name": "to",
+				"type": "address"
+			}
+		],
+		"name": "buyNFT",
+		"outputs": [
+			{
+				"name": "",
+				"type": "bool"
+			}
+		],
+		"payable": false,
+		"stateMutability": "nonpayable",
+		"type": "function"
+	}
+]

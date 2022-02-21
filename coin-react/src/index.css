@@ -11,3 +11,218 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+
+
+/* login css*/
+.login-form{
+  width: 434px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  border-radius: 5px;
+  padding: 20px;
+  border: solid;
+  border-width: 0.01px;
+  border-color: #E0E0E0;
+  text-align: center;
+}
+
+.text-field{
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 80%;
+  background-color:#E9E9E9 ;
+  border: none;
+  border-radius: 1.3px;
+  font-size: 14px;
+}
+
+.submit-btn{
+  font-size: 14px;
+  background-color: #1F8A7B;
+  color: white;
+  width: 80%;
+  border-radius: 1.3px;
+  padding: 10px;
+  border: none;
+}
+
+.signup-btn{
+  font-size: 14px;
+  margin-top: 10px;
+  background-color: #94A5B1;
+  color: white;
+  width: 80%;
+  border-radius: 1.3px;
+  padding: 10px;
+  border: none;
+}
+
+.links {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.links a{
+  font-size: 12px;
+  color: #9B9B9B;
+}
+
+Link {
+  margin-top: 30px;
+  text-align: center;
+  font-size: 12px;
+  color: #9B9B9B;
+}
+
+.login-head {
+  text-align: center;
+  font-size: 32px;
+  margin-top: 10px;
+  margin-bottom: 32px;
+  width: 100%;
+  font-weight: bold;
+}
+
+.baseline {
+  display:flex;
+  flex-basis: 100%;
+  align-items:center;
+  color:rgba(0, 0, 0, 0.35);
+  font-size: 14px;
+  margin:8px 0px;
+  padding: 10px;
+}
+.baseline::before{
+  content:" ";
+  flex-grow:1;
+  margin:0px, 16px;
+  margin-left: 10px;
+  background:rgba(0, 0, 0, 0.35);
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
+}
+.baseline::after {
+  content:" ";
+  flex-grow:1;
+  margin:0px, 16px;
+  background:rgba(0, 0, 0, 0.35);
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
+}
+
+.line {
+  display:flex;
+  flex-basis: 100%;
+  align-items:center;
+  color:rgba(0, 0, 0, 0.35);
+  font-size: 14px;
+  margin:8px 0px;
+  padding: 10px;
+}
+
+.line::before{
+  content:" ";
+  flex-grow:1;
+  margin:0px, 16px;
+  margin-right: 10px;
+  margin-left: 10px;
+  background:rgba(0, 0, 0, 0.35);
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
+}
+.line::after {
+  content:" ";
+  flex-grow:1;
+  margin:0px, 16px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background:rgba(0, 0, 0, 0.35);
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
+}
+
+.acinput-container{
+  margin-top: 34px;
+  margin-bottom: 30px;
+}
+
+.google-login-form{
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: none ;
+  color:#9B9B9B;
+  font-size: 15px;
+}
+
+/* login css end*/
+/* register css*/
+.register-form{
+  width: 584px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
+  border-radius: 5px;
+  padding: 20px;
+  border: solid;
+  border-width: 0.01px;
+  border-color: #E0E0E0;
+  text-align: center;
+}
+
+.register-head {
+  text-align: left;
+  margin-left: 15px;
+  font-size: 32px;
+  margin-top: 10px;
+  margin-bottom: 32px;
+  width: 100%;
+  font-weight: bold;
+}
+
+.regisInfo-box{
+  display: flex;
+  margin-top: 13px;
+}
+
+
+.qr-container{
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 34px;
+}
+
+.qr_load{
+  background-color: #1F8A7B;
+}
+
+.qr-check-container{
+  font-size: 14px;
+  background-color: #1F8A7B;
+  margin-left: 14.6px;
+  width: 80%;
+  border: none;
+}
+
+.qr_load{
+  color: #fff;
+  width:100%;
+  height: 100%;
+  font-weight: bold;
+  border: none;
+}
+.switch-button { margin-top: 10px; position: relative; display: inline-block; width: 55px; height: 30px; } 
+.switch-button input { opacity: 0; width: 0; height: 0; } 
+.onoff-switch { position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0; border-radius:20px; background-color: #ccc; box-shadow: inset 1px 5px 1px #999; -webkit-transition: .4s; transition: .4s; } .onoff-switch:before { position: absolute; content: ""; height: 22px; width: 22px; left: 4px; bottom: 4px; background-color: #fff; -webkit-transition: .5s; transition: .4s; border-radius:20px; } 
+.switch-button input:checked + 
+.onoff-switch { background-color: #F2D522; box-shadow: inset 1px 5px 1px #E3AE56; } 
+.switch-button input:checked + 
+.onoff-switch:before { -webkit-transform: translateX(26px); -ms-transform: translateX(26px); transform: translateX(26px); }

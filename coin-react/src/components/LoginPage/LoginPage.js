@@ -2,6 +2,7 @@ import React from 'react';
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
 import { useEffect } from 'react';
 import { initializeApp } from 'firebase/app';
+import {Link} from 'react-router-dom';
 
 function LoginPage() {
   useEffect(() => {});
@@ -35,9 +36,24 @@ function LoginPage() {
 
   return (
     <div>
-      <div>LoginPage</div>
-      <div>
-        <button onClick={loginWithGoogle}>구글로 로그인</button>
+      <div className="login-form" >
+        <div className= "login-head">Coin-Tube</div>
+        <div className="baseline"></div>
+        <form method="get" action="#">
+          <div className= "acinput-container">
+            <input type="text" name="user_name" className="text-field" placeholder="email"/>
+            <input type="password" name="pw" className="text-field" placeholder="password"/>
+          </div>
+          <input type="submit" value="Login" className="submit-btn"/>
+          <Link to="/register"><input type="submit" value="Signup" className="signup-btn"/></Link>
+        </form>
+        <div className="line">  or  </div>
+        <div className="links">
+        <div>
+        <button onClick={loginWithGoogle} className="google-login-form">continue with google</button>
+        </div>
+        <a href ="#">비밀번호를 잊어버리셨나요?</a>
+      </div>
       </div>
     </div>
   );
