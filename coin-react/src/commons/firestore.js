@@ -17,15 +17,24 @@ export const addUser = async (uid, email, name, address) => {
     name,
     address,
   });
-  console.log(res);
   return res;
 };
 
 export const getUser = async (uid) => {
   const usersCol = query(collection(db, 'users'), where('uid', '==', uid));
   const res = await getDocs(usersCol);
-  console.log(res);
   return res;
+};
+
+export const getCreators = async () => {
+  const collections = query(collection(db, 'creators'));
+  const res = await getDocs(collections);
+  return res.docs.map((creator) => {
+    return {
+      id: creator.id,
+      ...creator.data(),
+    };
+  });
 };
 
 export const addTest = async () => {
