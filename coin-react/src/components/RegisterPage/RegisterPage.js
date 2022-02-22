@@ -85,6 +85,10 @@ function RegisterPage() {
         </form>
       <div className="line">  info  </div>
       <div className="links">
+
+      {errorFromSubmit &&
+                    <p>{errorFromSubmit}</p>
+                }
       <a href="#">QR체크를 꼭 해주세요</a>
     </div>
     </div>
