@@ -1,15 +1,17 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   getAuth,
   signInWithPopup,
   GoogleAuthProvider,
   signInWithEmailAndPassword,
 } from 'firebase/auth';
-import { initializeApp } from 'firebase/app';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import { getUser } from '../../commons/firestore';
 
 function LoginPage() {
+  let navigate = useNavigate();
+
   const {
     register,
     watch,
@@ -25,13 +27,24 @@ function LoginPage() {
     try {
       // console.log('test', data);
       setLoading(true);
-      const user = await signInWithEmailAndPassword(
+      const firebaseUser = await signInWithEmailAndPassword(
         auth,
         data.email,
         data.password
       );
       setLoading(false);
-      console.log('user', user);
+      console.log('user', firebaseUser);
+
+      const user = await getUser(firebaseUser.user.uid);
+      if (user.size > 0) {
+        // 로그인 성공처리
+        navigate('/');
+      } else {
+        // 아직 주소 등록 안한 경우 -> 회원가입 처리
+        navigate(
+          `/register?uid=${firebaseUser.user.uid}&email=${firebaseUser.user.email}`
+        );
+      }
     } catch (error) {
       console.log(error);
       setErrorFromSubmit(error.message);
@@ -48,23 +61,22 @@ function LoginPage() {
       const auth = getAuth();
 
       const result = await signInWithPopup(auth, provider);
-      // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
-      // The signed-in user info.
-      const user = result.user;
-      // ...
+      const firebaseUser = result.user;
+      console.log('loginWithGoogle success', token, firebaseUser);
 
-      console.log('loginWithGoogle success', token, user);
+      const user = await getUser(firebaseUser.uid);
+      if (user.size > 0) {
+        // 로그인 성공처리
+        navigate('/');
+      } else {
+        // 아직 주소 등록 안한 경우 -> 회원가입 처리
+        navigate(
+          `/register?uid=${firebaseUser.uid}&token=${token}&email=${firebaseUser.email}`
+        );
+      }
     } catch (error) {
-      // Handle Errors here.
-      // const errorCode = error.code;
-      // const errorMessage = error.message;
-      // // The email of the user's account used.
-      // const email = error.email;
-      // // The AuthCredential type that was used.
-      // const credential = GoogleAuthProvider.credentialFromError(error);
-      // ...
       console.log('loginWithGoogle error', error);
     }
   };
