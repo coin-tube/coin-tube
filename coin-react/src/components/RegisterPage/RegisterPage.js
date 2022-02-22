@@ -28,14 +28,10 @@ function RegisterPage() {
       console.log('test', data);
       setLoading(true);
 
+      let res = null;
       if (data.uid) {
         // 이미 가입된 계정이 있는 경우
-        const res = await addUser(
-          data.uid,
-          data.email,
-          data.user_name,
-          UserAddress
-        );
+        res = await addUser(data.uid, data.email, data.user_name, UserAddress);
         console.log('addUser finish', res);
       } else {
         const auth = getAuth();
@@ -45,15 +41,17 @@ function RegisterPage() {
           data.password
         );
 
-        await addUser(
+        res = await addUser(
           createdUser.user.uid,
           data.email,
           data.user_name,
           UserAddress
         );
       }
+
       setLoading(false);
 
+      localStorage.setItem('user', res);
       navigate('/');
     } catch (error) {
       setErrorFromSubmit(error.message);

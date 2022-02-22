@@ -38,6 +38,9 @@ function LoginPage() {
       const user = await getUser(firebaseUser.user.uid);
       if (user.size > 0) {
         // 로그인 성공처리
+        console.log('로그인 성공', user);
+        const data = user.docs[0];
+        localStorage.setItem('user', data.data());
         navigate('/');
       } else {
         // 아직 주소 등록 안한 경우 -> 회원가입 처리
@@ -69,6 +72,8 @@ function LoginPage() {
       const user = await getUser(firebaseUser.uid);
       if (user.size > 0) {
         // 로그인 성공처리
+        const data = user.docs[0];
+        localStorage.setItem('user', data.data());
         navigate('/');
       } else {
         // 아직 주소 등록 안한 경우 -> 회원가입 처리
