@@ -27,8 +27,7 @@ function Header() {
               <a href="/login">Login</a>
             )}</li>
             </ul>
-            <div>
-            <input class="search_input" type="text" placeholder="Search"></input>
+            <div class="search_input">
             </div>
           </nav>
         </div>

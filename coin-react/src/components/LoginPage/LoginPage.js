@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import Header from '../Header';
+
 import {
   getAuth,
   signInWithPopup,
@@ -88,6 +90,7 @@ function LoginPage() {
 
   return (
     <div>
+      <Header />
       <div className="login-form">
         <div className="login-head">Coin-Tube</div>
         <div className="baseline"></div>

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-
+import Header from '../Header';
 import MypageProfile from './MypageProfile';
 
 const TabText = styled.div`
@@ -104,12 +104,14 @@ function AdminPage(){
   // const userName = userinfo.username;
 
   return(
-    <div style={{paddingLeft: "30px", paddingRight: "30px"}}>
-      <div style={{padding: "50px 30px 30px 30px"}}>
-        <Username>{userName}</Username>
-        <Font1>Something</Font1>
+    <div><Header/>
+      <div style={{paddingLeft: "30px", paddingRight: "30px"}}>
+        <div style={{padding: "10px 30px 30px 30px"}}>
+          <Username>{userName}</Username>
+          <Font1>Something</Font1>
+        </div>
+        <SelectToggle/>
       </div>
-      <SelectToggle/>
     </div>
   )
 }

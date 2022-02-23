@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import { useSearchParams } from 'react-router-dom';
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
 import { addUser } from '../../commons/firestore';
-
+import Header from '../Header';
 function RegisterPage() {
   const {
     register,
@@ -76,6 +76,7 @@ function RegisterPage() {
   };
   return (
     <div>
+      <Header />
       <div className="register-form">
         <div className="register-head">Coin-Tube</div>
         <div className="baseline"></div>
