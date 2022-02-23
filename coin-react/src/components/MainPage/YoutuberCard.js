@@ -3,20 +3,21 @@ import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Container = styled.div`
-    height: 415px; width: 345px;
+    height: 350px; width: 280px;
     border: 1px solid #cccccc;
 `
 
 const ImgContainer = styled.div`
-    height: 270px; width: 345px;
+    height: 220px; width: 100%;
     position: relative;
+    text-align: center;
 `
 const AvailableBadges = styled.div`
     position: absolute; z-index: 1;
     width: 100%; height: 100%;
     background-color: rgba(0, 0, 0, 0);
     color: rgba(0, 0, 0, 0);
-    padding-top: 60px;
+    padding-top: 48px;
     font-size: 80px; 
     text-align: center;
     cursor: pointer;
@@ -28,8 +29,7 @@ const AvailableBadges = styled.div`
 `
 const YoutuberImg = styled.img`
     max-width: 100%; height: 100%;
-    position: absolute; z-index: 0;
-    object-fit: cover;
+    margin: 0 auto;
 `
 
 const TextContainer = styled.div`
@@ -37,17 +37,17 @@ const TextContainer = styled.div`
     padding-left: 30px;
 `
 const YoutuberName = styled.text`
-    font-size: 23px; font-weight: bold;
+    font-size: 20px; font-weight: bold;
     display: inline-block;
     text-decoration: none; cursor: pointer; color: black;
     margin-top: 20px;
 `
 const FloorPrice = styled.text`
-    font-size: 23px; font-weight: bold;
+    font-size: 18px; font-weight: bold;
     display: block;
 
     margin-top: 10px;
-    margin-bottom: -10px;
+    margin-bottom: -8px;
 `
 
 const Font1 = styled.text`
@@ -55,18 +55,18 @@ const Font1 = styled.text`
     font-size: 16px;
 `
 
-function YoutuberCard({}){
+function YoutuberCard({cardinfo}){
     const navigate = useNavigate();
 
-    const youtuberName = "yourubername";
+    const youtuberName = cardinfo.name;
     const floorPrice = "0.00";
     const availableBadges = "33";
-    const youtuberImgUrl = "https://mground.kr/wp-content/uploads/2022/01/%EC%B9%A8%EC%B0%A9%EB%A7%A8.webp";
+    const youtuberImgUrl = cardinfo.image_url;
 
-    // const youtuberName = cardinfo.youtuber_name;
+
     // const floorPrice = cardinfo.floor_price;
     // const availableBadges = cardinfo.available_badges;
-    // const youtuberImgUrl = cardinfo.youtuber_img_url;
+    
 
     function toYoutuberPage(creatorID){
         navigate({

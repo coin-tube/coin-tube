@@ -5,6 +5,15 @@ import styled from 'styled-components';
 import YoutuberCard from './YoutuberCard';
 import { getCreators } from '../../commons/firestore';
 
+const CardContainer = styled.div`
+  display: grid;
+  background-color: white;
+  margin-left: 30px; margin-right: 30px;
+  grid-template-columns: repeat(auto-fill, minmax(18%, auto));
+  grid-row-gap: 3%; grid-column-gap: 1%;
+  margin-bottom: 7%;
+`
+
 function MainPage() {
   const [page, setPage] = useState(1);
   const [Youtubers, setYoutubers] = useState([]);
@@ -20,11 +29,10 @@ function MainPage() {
 
   useEffect(() => {
     const loadYoutuber = async () => {
-      const creators = await getCreators();
-      console.log('creators', creators);
-      setYoutubers(creators);
-      // const NewYoutubers = await ;
-      // setYoutubers((prev) => [...prev, ...NewYoutubers]);
+      const NewYoutubers = await getCreators();;
+      setYoutubers((prev) => [...prev, ...NewYoutubers]);
+      console.log(Youtubers);
+      
     };
 
     loadYoutuber();
@@ -33,9 +41,9 @@ function MainPage() {
   return (
     <div>
       <Header />
-      <Container onScroll={handleScroll}>
-        {Youtubers && Youtubers.map((Youtuber) => <YoutuberCard />)}
-      </Container>
+      <CardContainer onScroll={handleScroll}>
+        {Youtubers && Youtubers.map((cardinfo) => <YoutuberCard cardinfo={cardinfo}/>)}
+      </CardContainer>
     </div>
   );
 }
