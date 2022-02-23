@@ -13,6 +13,59 @@ code {
 }
 
 
+/* navigator css */
+
+.inner {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 1.9rem;
+  overflow: hidden;
+}
+
+.nav_body {
+  margin: 0
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin: 0px;
+  padding: 0;
+  background-color: #E0E0E0;
+  list-style-type: none;
+}
+
+.nav-item {
+  padding: 15px;
+  cursor: pointer;
+}
+
+.nav-item a {
+  text-align: center;
+  text-decoration: none;
+  color: #1F8A7B;
+}
+
+.nav-item:nth-child(1) {
+  background-color: #F2D522;
+}
+
+.nav-item:hover {
+  background-color: #E9E9E9;
+}
+
+.search_input{
+  width: 13%;
+  height: 40px;
+  margin-top:6px;
+  border-radius: 10px;
+  margin-left: 30px;
+  align-items: center;
+  border-width: 2px;
+  margin-bottom: 40px;
+}
 
 
 /* login css*/
