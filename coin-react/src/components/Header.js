@@ -8,6 +8,7 @@ function Header() {
   const logout = (e) => {
     e.preventDefault();
     localStorage.removeItem('user');
+    localStorage.removeItem('userid');
     navigate('/');
   };
   return (

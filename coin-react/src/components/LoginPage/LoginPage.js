@@ -43,6 +43,7 @@ function LoginPage() {
         console.log('로그인 성공', user);
         const data = user.docs[0];
         localStorage.setItem('user', data.data());
+        localStorage.setItem('userid', user);
         navigate('/');
       } else {
         // 아직 주소 등록 안한 경우 -> 회원가입 처리
@@ -76,6 +77,7 @@ function LoginPage() {
         // 로그인 성공처리
         const data = user.docs[0];
         localStorage.setItem('user', data.data());
+        localStorage.setItem('userid', firebaseUser.uid);
         navigate('/');
       } else {
         // 아직 주소 등록 안한 경우 -> 회원가입 처리

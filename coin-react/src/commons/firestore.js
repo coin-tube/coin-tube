@@ -37,6 +37,29 @@ export const getCreators = async () => {
   });
 };
 
+export const findCreators = async (uid) => {
+  const collections = query(collection(db, 'creators'), where('user_id', '==', uid));
+  const res = await getDocs(collections);
+  return res.docs.map((creator) => {
+    return {
+      id: creator.id,
+      ...creator.data(),
+    };
+  });
+};
+
+export const addCreator = async (user_id, description, link, channel_id, apply_flag) => {
+  const creatorCol = collection(db, 'creators');
+  const res = await addDoc(creatorCol, {
+    user_id,
+    description,
+    link,
+    channel_id,
+    apply_flag
+  });
+  return res;
+};
+
 export const addTest = async () => {
   console.log('test');
   const citiesCol = collection(db, 'cities');
