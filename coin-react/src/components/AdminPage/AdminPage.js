@@ -1,38 +1,117 @@
-import React, { useEffect } from 'react';
-import { getCreators } from '../../commons/firestore';
+import React, { useEffect, useState } from 'react';
+import styled from 'styled-components';
 
-function AdminPage() {
-  const [creators, setCreators] = React.useState([]);
+import MypageProfile from './MypageProfile';
 
-  const loadCreators = async () => {
-    const creators = await getCreators();
-    console.log('creators', creators);
-    setCreators(creators);
-  };
+const TabText = styled.div`
+  position: relative;
+  display: inline-block;
+  margin-left: 10px; margin-right: 10px;
+  padding-top: 10px; padding-bottom: 20px; 
+  color: #b1b1b1;
+  text-align: center;
+  cursor: pointer;
+`
+const UnderLine = styled.div`
+  position: absolute; bottom: 0;
+  width: 100%; height: 4px;
+  background-color: #8a8a8a;
+`
 
-  useEffect(() => {
-    loadCreators();
-  }, []);
+const InfomationDiv = styled.div`
+  border: 1px solid #cccccc;
+  width: 0 auto;
+  margin-top: -4px;
+  padding: 5px 30px 60px 30px; 
+`
 
-  return (
+const Username = styled.text`
+  font-size: 30px;
+  font-weight: bold;
+`
+const Font1 = styled.text`
+    margin-top: -3px;
+    display: block;
+    font-size: 14px;
+    color: #b5b5b5;
+`
+
+function SelectToggle(){
+  const [tabState, setTabState] = useState({
+    tabProfile: true,
+    tabBadge: false,
+    tabYoutuber: false
+  });
+
+  const tabHandler = (e) => {
+    const newTabState = {...tabState};
+    const activeTab = e.currentTarget.id;
+    for(let key in newTabState){
+      key === activeTab
+        ? (newTabState[key] = true)
+        : (newTabState[key] = false)
+    }
+    setTabState(newTabState);
+  }
+
+  return(
     <div>
-      <div>AdminPage</div>
-      <hr />
+    <div style={{ marginLeft: "30px"}}>
+      { tabState.tabProfile ?
+        <>
+          <TabText id='tabProfile' onClick={tabHandler} style={{color: '#1b1b1b', fontWeight: "bold"}}>
+            profile
+            <UnderLine/>
+          </TabText>
+        </>:
+        <TabText id='tabProfile' onClick={tabHandler}>
+          profile
+        </TabText>}
 
-      <div>
-        {creators.map((creator) => (
-          <div key={creator.id}>
-            <span style={{ marginRight: 20 }}>{creator.description}</span>
-            <span>
-              <a href={creator.link} target="_blank">
-                {creator.link}
-              </a>
-            </span>
-          </div>
-        ))}
-      </div>
+      { tabState.tabBadge ?
+        <>
+          <TabText id='tabBadge' onClick={tabHandler} style={{color: '#1b1b1b', fontWeight: "bold"}}>
+          Badges
+            <UnderLine/>
+          </TabText>
+        </>:
+        <TabText id='tabBadge' onClick={tabHandler}>
+          Badges
+        </TabText>}
+
+      { tabState.tabYoutuber ?
+        <>
+          <TabText id='tabYoutuber' onClick={tabHandler} style={{color: '#1b1b1b', fontWeight: "bold"}}>
+          Youtuber Manage
+            <UnderLine/>
+          </TabText>
+        </>:
+        <TabText id='tabYoutuber' onClick={tabHandler}>
+          Youtuber Manage
+        </TabText>}
     </div>
-  );
+
+    <InfomationDiv>
+      { tabState.tabProfile ? <MypageProfile/> : "" }
+      {/******************  컴포넌트 추가 ***********************/}
+    </InfomationDiv>
+    </div>
+  )
+}
+
+function AdminPage(){
+  const userName = "Username";
+  // const userName = userinfo.username;
+
+  return(
+    <div style={{paddingLeft: "30px", paddingRight: "30px"}}>
+      <div style={{padding: "50px 30px 30px 30px"}}>
+        <Username>{userName}</Username>
+        <Font1>Something</Font1>
+      </div>
+      <SelectToggle/>
+    </div>
+  )
 }
 
 export default AdminPage;
