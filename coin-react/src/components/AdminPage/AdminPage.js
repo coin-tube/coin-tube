@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header from '../Header';
 import MypageProfile from './MypageProfile';
+import YoutuberProfile from './YoutuberProfile';
 
 const TabText = styled.div`
   position: relative;
@@ -94,6 +95,7 @@ function SelectToggle(){
     <InfomationDiv>
       { tabState.tabProfile ? <MypageProfile/> : "" }
       {/******************  컴포넌트 추가 ***********************/}
+      { tabState.tabYoutuber ? <YoutuberProfile/> : "" }
     </InfomationDiv>
     </div>
   )

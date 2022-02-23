@@ -37,6 +37,17 @@ export const getCreators = async () => {
   });
 };
 
+export const getMintingInfo = async (uid) => {
+  const collections = query(collection(db, 'minting'), where('creator_id', '==', uid));
+  const res = await getDocs(collections);
+  return res.docs.map((mintingInfo) => {
+    return {
+      id: mintingInfo.id,
+      ...mintingInfo.data(),
+    };
+  });
+};
+
 export const findCreators = async (uid) => {
   const collections = query(collection(db, 'creators'), where('user_id', '==', uid));
   const res = await getDocs(collections);
@@ -48,14 +59,16 @@ export const findCreators = async (uid) => {
   });
 };
 
-export const addCreator = async (user_id, description, link, channel_id, apply_flag) => {
+export const addCreator = async (user_id, description, link, channel_id, apply_flag, image_url, name) => {
   const creatorCol = collection(db, 'creators');
   const res = await addDoc(creatorCol, {
     user_id,
     description,
     link,
     channel_id,
-    apply_flag
+    apply_flag,
+    image_url,
+    name
   });
   return res;
 };
