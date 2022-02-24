@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import Badge from '../AdminPage/Badge';
+import Header from '../Header';
 
 const BackgroundIMG = styled.div`
   width: 100%; height: 250px;
@@ -85,6 +86,7 @@ function YoutuberSummary(){
 function YoutuberPage() {
   return (
     <>
+      <Header/>
       <div style={{display: "relative"}}>
         <BackgroundIMG/>
         <YoutuberProfileIMG/>
@@ -93,28 +95,8 @@ function YoutuberPage() {
       <YoutuberSummary/>
       <YoutuberText>{"안녕하세요"}</YoutuberText>
       <BadgeArea>
+        {/* {a && a.map((cardinfo) => <Badge/>)} */}
         <Badge/>
-        <Badge/>
-        <Badge/>
-        <Badge/>
-        <Badge/>
-        <Badge/>
-        <Badge/>
-        <Badge/>
-        <Badge/>
-        <Badge/>
-        <Badge/>
-        <Badge/>
-        <Badge/>
-        <Badge/>
-        <Badge/>
-        <Badge/>
-        <Badge/>
-        <Badge/>
-        <Badge/>
-        <Badge/>
-        <Badge/>
-
       </BadgeArea>
     </>
   )
