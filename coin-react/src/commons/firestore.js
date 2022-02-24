@@ -6,6 +6,7 @@ import {
   getDocs,
   query,
   where,
+  orderBy,
 } from 'firebase/firestore';
 const db = getFirestore();
 
@@ -38,7 +39,7 @@ export const getCreators = async () => {
 };
 
 export const getMintingInfo = async (uid) => {
-  const collections = query(collection(db, 'minting'), where('creator_id', '==', uid));
+  const collections = query(collection(db, 'minting'), where('creator_id', '==', uid), orderBy('title'));
   const res = await getDocs(collections);
   return res.docs.map((mintingInfo) => {
     return {
