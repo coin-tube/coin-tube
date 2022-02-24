@@ -70,7 +70,7 @@ function YoutuberCard({cardinfo}){
 
     function toYoutuberPage(creatorID){
         navigate({
-            pathname: "/youtuberPage",
+            pathname: "/youtuber",
             state: {creatorID}
        })
     }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import config from "../../apiConfig.js";
+import config from "../../config";
 import { Button, Modal } from 'react-bootstrap';
 import { findCreators, addCreator, getMintingInfo } from '../../commons/firestore';
 import styled from 'styled-components';
