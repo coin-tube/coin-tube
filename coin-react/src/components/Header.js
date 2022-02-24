@@ -17,19 +17,33 @@ function Header() {
         <div class="nav_body">
           <nav>
             <ul class="nav-container">
-              <li class="nav-item"><a href="/">Main</a></li>
-              <li class="nav-item"><a href="/register">register</a></li>
-              <li class="nav-item"><a href="/admin">admin</a></li>
-              <li class="nav-item">            {user ? (
-              <a href="#" onClick={logout}>
-                logout
-              </a>
-            ) : (
-              <a href="/login">Login</a>
-            )}</li>
+              <li class="nav-item">
+                <a href="/">Main</a>
+              </li>
+
+              {user ? (
+                <>
+                  <li class="nav-item">
+                    <a href="/admin">My page</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#" onClick={logout}>
+                      logout
+                    </a>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li class="nav-item">
+                    <a href="/login">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="/register">register</a>
+                  </li>
+                </>
+              )}
             </ul>
-            <div class="search_input">
-            </div>
+            <div class="search_input"></div>
           </nav>
         </div>
       </div>
