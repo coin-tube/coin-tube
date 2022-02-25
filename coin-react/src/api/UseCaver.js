@@ -28,10 +28,9 @@ const caver = new Caver(
 );
 const NFTContract = new caver.contract(KIP17ABI, NFT_CONTRACT_ADDRESS);
 
-
-export const fetchCardsOf = async (address) => { // 카드 정보 반환 함수 //
+export const fetchCardsOf = async (address) => {
   // Fetch Balance
-  const balance = await NFTContract.methods.balanceOf(address).call(); // 입력받은 주소의 klay를 가져오는데, 이는 (line:29)에서 ABI를 이용해 배포된 스마트 컨트랙트의 함수를 이용함
+  const balance = await NFTContract.methods.balanceOf(address).call();
   console.log(`[NFT Balance]${balance}`);
   // Fetch Token IDs
   const tokenIds = [];
@@ -62,3 +61,30 @@ export const getBalance = (address) => {
     return balance;
   });
 };
+
+// const CountContract = new caver.contract(CounterABI, COUNT_CONTRACT_ADDRESS);
+
+// export const readCount = async () => {
+//   const _count = await CountContract.methods.count().call();
+//   console.log(_count);
+// }
+
+// export const setCount = async (newCount) => {
+//   // 사용할 account 설정
+//   try {
+//     const privatekey = '0x26c8485748a7f9e9ae637a5c014f9955c2be9aa24ca8f1674e7e98c7123c9a4d';
+//     const deployer = caver.wallet.keyring.createFromPrivateKey(privatekey);
+//     caver.wallet.add(deployer);
+//     // 스마트 컨트랙트 실행 트랜젝션 날리기
+//     // 결과 확인
+
+//     const receipt = await CountContract.methods.setCount(newCount).send({
+//       from: deployer.address, // address
+//       gas: "0x4bfd200"//
+//     })
+//     console.log(receipt);
+//   } catch(e) {
+//     console.log(`[ERROR_SET_COUNT]${e}`);
+//   }
+
+// }

@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Header from '../Header';
 import MypageProfile from './MypageProfile';
-import YoutuberProfile from './YoutuberProfile';
 import MyPageBadges from './MyPageBadges';
+import YoutuberProfile from './YoutuberProfile';
+// import { getBalance } from "../../api/UseCaver";
+import { getKlipAddress } from '../../commons/firestore';
+import { getAddress } from '../../api/UseKlip';
 
 const TabText = styled.div`
   position: relative;
@@ -104,9 +107,15 @@ function SelectToggle(){
 }
 
 function AdminPage(){
+  const userId = localStorage.getItem('userid');
   const userName = "Username";
-  // const userName = userinfo.username;
+  const [myBalance, setMyBalance] = useState("0");
 
+  const getUserData = async() => {
+    const user_data = await getKlipAddress(userId);
+    // const _balance = await getBalance(user_data[0].address);
+    // setMyBalance(_balance);
+  }
   return(
     <div><Header/>
       <div style={{paddingLeft: "30px", paddingRight: "30px"}}>
@@ -115,6 +124,7 @@ function AdminPage(){
           <Font1>Something</Font1>
         </div>
         <SelectToggle/>
+        <button onClick={getUserData}>klay 잔고 조회</button> {myBalance} klay
       </div>
     </div>
   )

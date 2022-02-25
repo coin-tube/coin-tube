@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import config from "../../config.js";
-import { Button, Modal, Col, Container } from 'react-bootstrap';
-import { findCreators, addCreator, getMintingInfo } from '../../commons/firestore';
+import { Button, Modal, Col, Container, Form } from 'react-bootstrap';
+import { findCreators, addCreator, getMintingInfo, getKlipAddress } from '../../commons/firestore';
 import styled from 'styled-components';
+import { mintCardWithURI } from '../../api/UseKlip.js';
+import QRCode from "qrcode.react";
+
 
 const Text1 = styled.input.attrs(props => ({
     type: "text",
@@ -366,9 +369,15 @@ function YoutuberProfile() {
         }
     }
 
-    const executeMinting = () => {
+    const executeMinting = async(uri) => {
+        const user_data = await getKlipAddress(userId);
+        console.log('klip_address: ~~~~~~~~', (user_data[0].address));
+        const TokenId = String(new Date().getMilliseconds) + String(userId);
+        mintCardWithURI(user_data[0].address, TokenId, uri, setQrvalue, (result) => {
+            alert(JSON.stringify(result));
+        })
         console.log('뱃지 발행!!!');
-        setMintShow(false);
+        // setMintShow(false);
         // TODO SmartContract 연동
         // 화면 새로고침?
     }
@@ -399,6 +408,8 @@ function YoutuberProfile() {
     const mintingClick = () => setMintShow(true);
     const handleClose = () => setAlertShow(false);
     const mintingClose = () => setMintShow(false);
+    const DEFAULT_QR_CODE = 'DEFAULT';
+    const [qrvalue, setQrvalue] = useState(DEFAULT_QR_CODE);
     // const handleShow = () => setShow(true);
     return (
         <div>
@@ -460,7 +471,8 @@ function YoutuberProfile() {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={mintingClose}>닫기</Button>
-                    <Button variant="primary" onClick={executeMinting}>발행</Button>
+                    <Button className = "mintbutton" variant="primary" onClick={()=>executeMinting(badgeImage)}>발행</Button>
+                    <QRCode value={qrvalue} size={256} style={{ margin: "auto" }} />
                 </Modal.Footer>
             </MintingModal>
         </div>

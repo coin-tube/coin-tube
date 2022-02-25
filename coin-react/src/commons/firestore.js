@@ -49,6 +49,19 @@ export const getMintingInfo = async (uid) => {
   });
 };
 
+export const getKlipAddress = async (uid) => {
+  const collections = query(collection(db, 'users'), where('uid', '==', uid));
+  const res = await getDocs(collections);
+  return res.docs.map((address_info) => {
+    return {
+      id: address_info.id,
+      ...address_info.data(),
+    };
+  });
+};
+
+
+
 export const findCreators = async (uid) => {
   const collections = query(collection(db, 'creators'), where('user_id', '==', uid));
   const res = await getDocs(collections);
