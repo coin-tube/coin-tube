@@ -87,6 +87,28 @@ export const addCreator = async (user_id, description, link, channel_id, apply_f
   return res;
 };
 
+export const getBadges = async (id) => {
+  const collections = query(collection(db, 'badges'), where('minting_id', '==', id));
+  const res = await getDocs(collections);
+  return res.docs.map((badges) => {
+    return {
+      id: badges.id,
+      ...badges.data(),
+    };
+  });
+};
+
+export const findCreatorsByChannelId = async (channelId) => {
+  const collections = query(collection(db, 'creators'), where('channel_id', '==', channelId));
+  const res = await getDocs(collections);
+  return res.docs.map((creator) => {
+    return {
+      id: creator.id,
+      ...creator.data(),
+    };
+  });
+};
+
 export const addTest = async () => {
   console.log('test');
   const citiesCol = collection(db, 'cities');

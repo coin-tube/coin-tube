@@ -59,6 +59,7 @@ function YoutuberCard({cardinfo}){
     const navigate = useNavigate();
 
     const youtuberName = cardinfo.name;
+    const channelId = cardinfo.channel_id;
     const floorPrice = "0.00";
     const availableBadges = "33";
     const youtuberImgUrl = cardinfo.image_url;
@@ -71,19 +72,19 @@ function YoutuberCard({cardinfo}){
     function toYoutuberPage(creatorID){
         navigate("/youtuber", {
             state: {creatorID}
-       });
+         });
     }
 
     return(
         <Container>
             <ImgContainer>
-                <AvailableBadges onClick={() => toYoutuberPage(youtuberName)}>
+                <AvailableBadges onClick={() => toYoutuberPage(channelId)}>
                     {availableBadges}
                 </AvailableBadges>
                 <YoutuberImg src={youtuberImgUrl}/>
             </ImgContainer>
             <TextContainer>
-                <YoutuberName onClick={() => toYoutuberPage(youtuberName)}>
+                <YoutuberName onClick={() => toYoutuberPage(channelId)}>
                     {youtuberName}
                 </YoutuberName>
                 <FloorPrice>{floorPrice}</FloorPrice>
