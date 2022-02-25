@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Header from '../Header';
 import MypageProfile from './MypageProfile';
 import YoutuberProfile from './YoutuberProfile';
+import MyPageBadges from './MyPageBadges';
 
 const TabText = styled.div`
   position: relative;
@@ -96,6 +97,7 @@ function SelectToggle(){
       { tabState.tabProfile ? <MypageProfile/> : "" }
       {/******************  컴포넌트 추가 ***********************/}
       { tabState.tabYoutuber ? <YoutuberProfile/> : "" }
+      { tabState.tabBadge ? <MyPageBadges/> : "" }
     </InfomationDiv>
     </div>
   )

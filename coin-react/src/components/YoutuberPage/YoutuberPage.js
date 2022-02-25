@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components';
 import Badge from '../AdminPage/Badge';
 import Header from '../Header';
+import {useLocation} from "react-router-dom";
+
 
 const BackgroundIMG = styled.div`
   width: 100%; height: 250px;
@@ -84,6 +86,8 @@ function YoutuberSummary(){
 }
 
 function YoutuberPage() {
+  const location = useLocation();
+  console.log('state', location.state.creatorID);
   return (
     <>
       <Header/>

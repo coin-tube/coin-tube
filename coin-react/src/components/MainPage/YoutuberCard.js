@@ -69,10 +69,9 @@ function YoutuberCard({cardinfo}){
     
 
     function toYoutuberPage(creatorID){
-        navigate({
-            pathname: "/youtuber",
+        navigate("/youtuber", {
             state: {creatorID}
-       })
+       });
     }
 
     return(
